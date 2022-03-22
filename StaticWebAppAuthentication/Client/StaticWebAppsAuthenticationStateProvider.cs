@@ -14,6 +14,12 @@ namespace StaticWebAppAuthentication.Client
         {
             _config = config ?? throw new ArgumentNullException(nameof(config));
             _http = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
+
+            this.AuthenticationStateChanged += StaticWebAppsAuthenticationStateProvider_AuthenticationStateChanged;
+        }
+
+        private void StaticWebAppsAuthenticationStateProvider_AuthenticationStateChanged(Task<AuthenticationState> task)
+        {
         }
 
         public override async Task<AuthenticationState> GetAuthenticationStateAsync()
